@@ -32,7 +32,7 @@ export const FibonacciPage: React.FC = () => {
     <SolutionLayout title="Последовательность Фибоначчи">
       <form className={styles.form} onSubmit={handleClick}>
         <Input
-          type={'text'}
+          type={'number'}
           min="1"
           max="19"
           maxLength={19}
