@@ -53,6 +53,11 @@ export const StackPage: React.FC = () => {
       removed: true
     })
     const stackTmp = stack;
+    const peakValue = stackTmp.peak();
+
+    if (peakValue) {
+      peakValue.state = ElementStates.Changing;
+    }
     setStack(stackTmp);
     setResult([...stackTmp.getElements()]);
     await setDelay(X_SHORT_DELAY_IN_MS);
