@@ -10,6 +10,7 @@ import { ElementStates } from "../../types/element-states";
 import { setDelay } from "../../utils/utils";
 import { X_SHORT_DELAY_IN_MS } from "../../constants/delays";
 
+
 export const StackPage: React.FC = () => {
   const [value, setValue] = React.useState<string>('');
 
@@ -20,6 +21,7 @@ export const StackPage: React.FC = () => {
     added: false,
     removed: false
   });
+
 
   const handleAdd = async () => {
     setLoader({
@@ -41,7 +43,6 @@ export const StackPage: React.FC = () => {
       added: false,
     })
   }
-
 
 
   const handleRemove = async () => {
@@ -66,6 +67,7 @@ export const StackPage: React.FC = () => {
     })
   }
 
+
   const handleClear = async () => {
     setLoader({
       ...loader,
@@ -80,6 +82,7 @@ export const StackPage: React.FC = () => {
       removed: false
     })
   }
+
 
   return (
     <SolutionLayout title="Стек">
