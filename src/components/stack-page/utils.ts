@@ -2,7 +2,7 @@ export interface IStack<T> {
   push: (item: T) => void;
   pop: () => void;
   clear: () => void;
-  peak: () => T | null;
+  peak: () => T;
   getElements: () => T[];
   getSize: () => number;
 }
@@ -26,12 +26,9 @@ export class Stack<T> implements IStack<T> {
     return this.container;
   };
 
-  peak = (): T | null => {
+  peak = (): T => {
     const len = this.getSize();
-    if (len > 0) {
-      return this.container[len - 1];
-    }
-    return null;
+    return this.container[len - 1];
   };
 
   getSize = () => this.container.length;

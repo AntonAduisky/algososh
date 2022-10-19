@@ -28,17 +28,12 @@ export const StackPage: React.FC = () => {
     })
     const inputValue = value;
     const stackTmp = stack;
-    const peakValue = stackTmp.peak();
-
     stackTmp.push({ value: inputValue, state: ElementStates.Changing });
-
     setValue('');
     setStack(stackTmp);
     setResult([...stackTmp.getElements()]);
     await setDelay(X_SHORT_DELAY_IN_MS);
-    if (peakValue) {
-      peakValue.state = ElementStates.Default;
-    }
+    stackTmp.peak().state = ElementStates.Default;
     setStack(stackTmp);
     setResult([...stackTmp.getElements()]);
     setLoader({
@@ -47,6 +42,8 @@ export const StackPage: React.FC = () => {
     })
   }
 
+
+
   const handleRemove = async () => {
     setLoader({
       ...loader,
@@ -54,7 +51,6 @@ export const StackPage: React.FC = () => {
     })
     const stackTmp = stack;
     const peakValue = stackTmp.peak();
-
     if (peakValue) {
       peakValue.state = ElementStates.Changing;
     }
@@ -111,7 +107,7 @@ export const StackPage: React.FC = () => {
         <Button
           text="Очистить"
           onClick={handleClear}
-          disabled={stack.getSize() === 0  || loader.added}
+          disabled={stack.getSize() === 0 || loader.added}
         />
       </form>
       <ul className={styles.list}>
