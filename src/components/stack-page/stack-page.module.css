@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.form>*:last-child {
+  margin-left: 68px;
+}
+
+.input {
+  max-width: 377px;
+}
+
+.list {
+  display: inline-flex;
+  /* flex-wrap: wrap; */
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.items {
+  list-style: none;
+  gap: 10px;
+  margin: 48px auto;
+}
