@@ -13,7 +13,7 @@ import { X_SHORT_DELAY_IN_MS } from "../../constants/delays";
 export const QueuePage: React.FC = () => {
   const [value, setValue] = React.useState<string>('');
 
-  const queueInstance = useMemo(() => new Queue<TQueueItem>(6), []);
+  const queueInstance = useMemo(() => new Queue<TQueueItem>(7), []);
   const [queue, setQueue] = useState<Queue<TQueueItem>>(queueInstance);
   const [result, setResult] = useState<(TQueueItem | null)[]>([]);
   const [loader, setLoader] = useState<TLoading>({
