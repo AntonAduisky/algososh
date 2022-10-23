@@ -7,7 +7,7 @@ import { Button } from "../ui/button/button";
 import { checkValidity, getFibonacciNumber } from "./utils";
 import { setDelay } from "../../utils/utils";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
-import { MAX_NUMBER, MIN_NUMBER } from "../../constants/fibonacci";
+import { MAX_NUMBER, MIN_LENGTH, MIN_NUMBER } from "../../constants/fibonacci";
 
 export const FibonacciPage: React.FC = () => {
   const [number, setNumber] =  React.useState<number>(-1);
@@ -43,7 +43,7 @@ export const FibonacciPage: React.FC = () => {
         <Button type="submit" text="рассчитать" disabled={checkValidity(number) || !number} isLoader={loader} />
       </form>
       <ul className={styles.list}>
-        {result?.length > 0 &&
+        {result?.length > MIN_LENGTH &&
           result.map((item, index) => (
             <li className={styles.items} key={index}>
               <Circle
