@@ -9,6 +9,7 @@ import { Stack } from "./utils";
 import { ElementStates } from "../../types/element-states";
 import { setDelay } from "../../utils/utils";
 import { X_SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { MAX_NUMBER, MAX_SIZE } from "../../constants/stack";
 
 
 export const StackPage: React.FC = () => {
@@ -89,8 +90,8 @@ export const StackPage: React.FC = () => {
       <form className={styles.form} onSubmit={e => e.preventDefault()}>
         < Input
           extraClass={styles.input}
-          maxLength={4}
-          max={4}
+          maxLength={MAX_NUMBER}
+          max={MAX_NUMBER}
           isLimitText
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
@@ -98,7 +99,7 @@ export const StackPage: React.FC = () => {
         <Button
           text="Добавить"
           onClick={handleAdd}
-          disabled={!value || loader.removed || stack.getSize() > 5}
+          disabled={!value || loader.removed || stack.getSize() > MAX_SIZE}
           isLoader={loader.added}
         />
         <Button

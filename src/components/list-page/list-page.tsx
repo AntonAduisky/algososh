@@ -10,6 +10,7 @@ import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { setDelay } from "../../utils/utils";
 import { ElementStates } from "../../types/element-states";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { MAX_LENGTH, MAX_SIZE, MIN_LENGTH } from "../../constants/list";
 
 export const ListPage: React.FC = () => {
   const [inputValue, setValueInput] = useState('');
@@ -102,13 +103,16 @@ export const ListPage: React.FC = () => {
     setValueInput('');
     const listTmp = list;
     let resultTmp = [...result];
-    addSmallTopCircle(resultTmp, input, 0, "head");
-    setResult([...resultTmp]);
     listTmp.prepend(input);
-    await setDelay(SHORT_DELAY_IN_MS);
-
     setList(listTmp);
     resultTmp = renderData(list.toArray());
+    addSmallTopCircle(resultTmp, input, 0, "head");
+    setResult([...resultTmp]);
+
+    await setDelay(SHORT_DELAY_IN_MS);
+
+
+
     resultTmp[0].state = ElementStates.Modified;
     setResult([...resultTmp]);
     await setDelay(SHORT_DELAY_IN_MS);
@@ -132,13 +136,16 @@ export const ListPage: React.FC = () => {
     setValueInput('');
     const listTmp = list;
     let resultTmp = [...result];
-    addSmallTopCircle(resultTmp, input, resultTmp.length - 1, "head");
-    setResult([...resultTmp]);
-    listTmp.append(input);
-    await setDelay(SHORT_DELAY_IN_MS);
 
+
+    listTmp.append(input);
     setList(listTmp);
     resultTmp = renderData(list.toArray());
+    addSmallTopCircle(resultTmp, input, resultTmp.length - 1, "head");
+
+    await setDelay(SHORT_DELAY_IN_MS);
+    setResult([...resultTmp]);
+
     resultTmp[resultTmp.length - 1].state = ElementStates.Modified;
     setResult([...resultTmp]);
     await setDelay(SHORT_DELAY_IN_MS);
@@ -355,8 +362,8 @@ export const ListPage: React.FC = () => {
         <div className={styles.wrapper}>
           <Input
             extraClass={styles.input}
-            maxLength={4}
-            max={4}
+            maxLength={MAX_LENGTH}
+            max={MAX_LENGTH}
             isLimitText
             placeholder="Введите значение"
             value={inputValue}
@@ -369,7 +376,7 @@ export const ListPage: React.FC = () => {
             disabled={
               inputValue === ''
               || loader.disabled
-              || list.getSize() === 10
+              || list.getSize() === MAX_SIZE
             }
             isLoader={loader.append}
           />
@@ -380,7 +387,7 @@ export const ListPage: React.FC = () => {
             disabled={
               inputValue === ''
               || loader.disabled
-              || list.getSize() === 10
+              || list.getSize() === MAX_SIZE
             }
             isLoader={loader.prepend}
           />
@@ -389,7 +396,7 @@ export const ListPage: React.FC = () => {
             linkedList="small"
             onClick={handleRemoveHead}
             disabled={
-              list.toArray().length === 0
+              list.toArray().length === MIN_LENGTH
               || loader.disabled
             }
             isLoader={loader.removeHead}
@@ -399,7 +406,7 @@ export const ListPage: React.FC = () => {
             linkedList="small"
             onClick={handleRemoveTail}
             disabled={
-              list.toArray().length === 0
+              list.toArray().length === MIN_LENGTH
               || loader.disabled
             }
             isLoader={loader.removeTail}
@@ -420,7 +427,7 @@ export const ListPage: React.FC = () => {
             disabled={inputValue === ''
               || indexInput === ''
               || loader.disabled
-              || list.getSize() === 10
+              || list.getSize() === MAX_SIZE
             }
           />
           <Button
@@ -430,10 +437,12 @@ export const ListPage: React.FC = () => {
             isLoader={loader.removeFrom}
             disabled={
               indexInput === ''
+              || list.toArray().length === MIN_LENGTH
               || loader.disabled
               || !parseInt(indexInput)
               || parseInt(indexInput) < 0
               || parseInt(indexInput) > list.getSize() - 1}
+
           />
         </div>
       </form>

@@ -47,6 +47,10 @@ export const SortingPage: React.FC = () => {
 
     const arr = newArray.slice();
 
+
+    //Можно лучше: Здесь и далее. Стоит создать функции сортировки таким образом, 
+    //чтобы они возвращали набор шагов и далее при отображении алгоритма добавлять паузы между шагами, 
+    //а не генерировать паузы непосредственно в алгоритме.
     for (let i = 0; i < arr.length; i++) {
       let sortIdx = i;
       arr[sortIdx].state = ElementStates.Changing;
@@ -86,7 +90,7 @@ export const SortingPage: React.FC = () => {
       descending: !ascending
     });
 
-    const arr = newArray.slice();;
+    const arr = newArray.slice();
     const { length } = arr;
 
     for (let i = 0; i < length; i++) {

@@ -4,11 +4,12 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
-import { Queue } from "./utils";
+import {Queue } from "./utils";
 import { TLoading, TQueueItem } from "../../types/queue.types";
 import { ElementStates } from "../../types/element-states";
 import { setDelay } from "../../utils/utils";
 import { X_SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { MAX_LENGTH, MAX_NUMBER, MIN_NUMBER } from "../../constants/queue";
 
 export const QueuePage: React.FC = () => {
   const [value, setValue] = React.useState<string>('');
@@ -24,7 +25,7 @@ export const QueuePage: React.FC = () => {
 
   const getDefaultQueue = () => {
     const arr: Array<JSX.Element> = [];
-    for (let i = 0; i <= 6; i++) {
+    for (let i = MIN_NUMBER; i < MAX_NUMBER; i++) {
       arr.push(<li className={styles.items} key={i}>
         <Circle
           state={ElementStates.Default}
@@ -103,8 +104,8 @@ export const QueuePage: React.FC = () => {
         < Input
           placeholder="введите значение"
           extraClass={styles.input}
-          maxLength={4}
-          max={4}
+          maxLength={MAX_LENGTH}
+          max={MAX_LENGTH}
           isLimitText
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
@@ -112,19 +113,25 @@ export const QueuePage: React.FC = () => {
         <Button
           text="Добавить"
           onClick={handleAdd}
-          disabled={!value || loader.removed}
+          disabled={!value || loader.removed || queue.getLength() === MAX_NUMBER}
           isLoader={loader.added}
         />
         <Button
           text="Удалить"
           onClick={handleRemove}
-          disabled={queue.isEmpty() || loader.added || queue.isEmpty()}
+          disabled={
+            queue.isEmpty()
+            || loader.added
+            || queue.isEmpty()}
           isLoader={loader.removed}
         />
         <Button
           text="Очистить"
           onClick={handleClear}
-          disabled={queue.isEmpty() || loader.added || queue.isEmpty()}
+          disabled={
+            queue.isEmpty()
+            || loader.added
+            || queue.isEmpty()}
           isLoader={loader.removed}
         />
       </form>

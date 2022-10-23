@@ -7,6 +7,7 @@ import { Button } from "../ui/button/button";
 import { checkValidity, getFibonacciNumber } from "./utils";
 import { setDelay } from "../../utils/utils";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { MAX_NUMBER, MIN_NUMBER } from "../../constants/fibonacci";
 
 export const FibonacciPage: React.FC = () => {
   const [number, setNumber] =  React.useState<number>(-1);
@@ -33,9 +34,9 @@ export const FibonacciPage: React.FC = () => {
       <form className={styles.form} onSubmit={handleClick}>
         <Input
           type={'number'}
-          min="1"
-          max="19"
-          maxLength={19}
+          min={MIN_NUMBER}
+          max={MAX_NUMBER}
+          maxLength={MAX_NUMBER}
           isLimitText={true}
           onChange={handleChange}
         />

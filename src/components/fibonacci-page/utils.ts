@@ -1,15 +1,15 @@
+import { MAX_NUMBER, MIN_NUMBER } from "../../constants/fibonacci";
+
 export const getFibonacciNumber = (n: number): number[] => {
-  let arr: number[] = [0, 1];
+  let arr: number[] = [1, 1];
   for (let i = 2; i < n + 1; i++) {
     arr.push(arr[i - 2] + arr[i - 1]);
   }
   return arr;
 };
 
-  export const checkValidity = (number: number) => {
-    if(number!) {
-      if(number <= 0 || number > 19) return true;
-      return false
-    }
-    return false
-  }
+export const checkValidity = (number: number) => {
+  if (number && (number < MIN_NUMBER || number > MAX_NUMBER)) return true;
+
+  return false;
+};
