@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  gap: 12px;
+  max-width: 567px;
+  margin: 0 auto 146px;
+}
+
+.items {
+  display: inline-flex;
+  margin-right: 16px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+}
