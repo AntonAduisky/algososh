@@ -14,7 +14,6 @@ export interface ILinkedList<T> {
   removeTail: (item: T) => void;
   insertAt: (item: T, index: number) => void;
   removeFrom: (index: number) => void;
-  getItemByIndex: (index: number) => T | null;
   getSize: () => number;
   toArray: () => T[];
 }
@@ -140,19 +139,6 @@ export class LinkedList<T> implements ILinkedList<T> {
       this.size--;
     } else {
       return;
-    }
-  }
-
-  getItemByIndex (index: number) {
-    if (index < 0 || index > this.size) {
-      return null;
-    } else {
-      let current = this.head;
-      for (let i = 0; i < index; i++) {
-        current = current?.next || null;
-      }
-
-      return current?.value || null;
     }
   }
 
