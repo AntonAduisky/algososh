@@ -26,6 +26,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     this.head = null;
     this.size = 0;
 
+    //Можно лучше: Лучше создать какой-то отдельный метод для этого.
     if (items) {
       for (let item of items) {
         this.append(item);
@@ -37,7 +38,7 @@ export class LinkedList<T> implements ILinkedList<T> {
     const node = new Node(item);
     let currentent;
 
-    if (this.head === null) {
+    if (!this.head) {
       this.head = node;
     } else {
       currentent = this.head;
@@ -166,7 +167,7 @@ export const randomStringArr = (min = 4, max = 6) => {
   const limit = Math.floor(Math.random() * (max + 1 - min)) + min;
   const arr = [];
   for (let i = 0; i < limit; i++) {
-    arr.push(Math.floor(Math.random()*100).toString());
+    arr.push(Math.floor(Math.random() * 100).toString());
   }
   return arr;
 }

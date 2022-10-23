@@ -8,8 +8,9 @@ import { ElementStates } from "../../types/element-states";
 import { swap } from "./utils";
 import { setDelay } from "../../utils/utils";
 import { TStringResult } from "../../types/string.types";
+import { MAX_LENGTH, MIN_LENGTH } from "../../constants/string";
 
-export const StringComponent: React.FC = () => {
+export const StringPage: React.FC = () => {
   const [string, setString] = useState<string>('');
   const [result, setResult] = useState<TStringResult>([]);
   const [step, setStep] = useState<number>(-1);
@@ -21,14 +22,14 @@ export const StringComponent: React.FC = () => {
 
   const handleClick = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let items = string.split('');
-    if (items.length < 2) {
+    const items = string.split('');
+    if (items.length < MIN_LENGTH) {
       setResult([{ item: items[0], state: ElementStates.Modified }]);
       return;
     }
     setResult(
       items.map((item, index) => {
-        let elementState =
+        const elementState =
           index === 0 || index === string.length - 1
             ? ElementStates.Changing
             : ElementStates.Default;
@@ -67,8 +68,8 @@ export const StringComponent: React.FC = () => {
       <form className={styles.form} onSubmit={handleClick}>
         <Input
           type={'text'}
-          max="11"
-          maxLength={11}
+          max={MAX_LENGTH}
+          maxLength={MAX_LENGTH}
           isLimitText={true}
           value={string}
           onChange={handleChange}

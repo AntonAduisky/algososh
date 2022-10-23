@@ -1,3 +1,4 @@
+import { MAX_NUMBER, MIN_NUMBER } from "../../constants/sorting"
 import { TNewArray } from "../../types/sorting.types"
 
 export const swap = (arr: TNewArray, first: number, second: number) => {
@@ -6,7 +7,7 @@ export const swap = (arr: TNewArray, first: number, second: number) => {
   arr[second] = temp
 }
 
-export const randomArr = (min = 3, max = 17) => {
+export const randomArr = (min = MIN_NUMBER, max = MAX_NUMBER) => {
   const arr = [];
   const limit = Math.floor(Math.random() * (max + 1 - min)) + min;
   for (let i = 0; i < limit; i++) {
