@@ -9,7 +9,7 @@ export const getFibonacciNumber = (n: number): number[] => {
 };
 
 export const checkValidity = (number: number) => {
-  if (number && (number < MIN_NUMBER || number > MAX_NUMBER)) return true;
+  if (number && (number < MIN_NUMBER || number > MAX_NUMBER)) return false;
 
-  return false;
+  return true;
 };

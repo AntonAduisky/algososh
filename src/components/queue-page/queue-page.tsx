@@ -45,11 +45,10 @@ export const QueuePage: React.FC = () => {
       ...loader,
       added: true
     });
-    const inputValue = value;
     const queueTmp = queue;
     const queueItems = queueTmp.getElements();
     queueTmp.enqueue({
-      value: inputValue,
+      value,
       state: ElementStates.Changing
     });
     setValue('');

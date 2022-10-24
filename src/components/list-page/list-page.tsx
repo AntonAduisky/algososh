@@ -70,7 +70,7 @@ export const ListPage: React.FC = () => {
 
   //отрисовка малого кружочка-превью в зависимости от позиции добавления
   const addSmallTopCircle = (array: TListItem[], value: string, index: number, position: "head" | "tail") => {
-    if (position === "head") {
+    if (array.length > 0 && position === "head") {
       array[index].head = (
         <Circle
           key={index}
@@ -80,7 +80,7 @@ export const ListPage: React.FC = () => {
         />
       )
     }
-    if (position === "tail") {
+    if (array.length > 0 && position === "tail") {
       array[index].tail = (
         <Circle
           key={index}
@@ -103,16 +103,13 @@ export const ListPage: React.FC = () => {
     setValueInput('');
     const listTmp = list;
     let resultTmp = [...result];
-    listTmp.prepend(input);
-    setList(listTmp);
-    resultTmp = renderData(list.toArray());
     addSmallTopCircle(resultTmp, input, 0, "head");
     setResult([...resultTmp]);
-
+    listTmp.prepend(input);
     await setDelay(SHORT_DELAY_IN_MS);
 
-
-
+    setList(listTmp);
+    resultTmp = renderData(list.toArray());
     resultTmp[0].state = ElementStates.Modified;
     setResult([...resultTmp]);
     await setDelay(SHORT_DELAY_IN_MS);
@@ -136,16 +133,13 @@ export const ListPage: React.FC = () => {
     setValueInput('');
     const listTmp = list;
     let resultTmp = [...result];
-
-
+    addSmallTopCircle(resultTmp, input, resultTmp.length - 1, "head");
+    setResult([...resultTmp]);
     listTmp.append(input);
+    await setDelay(SHORT_DELAY_IN_MS);
+
     setList(listTmp);
     resultTmp = renderData(list.toArray());
-    addSmallTopCircle(resultTmp, input, resultTmp.length - 1, "head");
-
-    await setDelay(SHORT_DELAY_IN_MS);
-    setResult([...resultTmp]);
-
     resultTmp[resultTmp.length - 1].state = ElementStates.Modified;
     setResult([...resultTmp]);
     await setDelay(SHORT_DELAY_IN_MS);
