@@ -40,7 +40,7 @@ export const FibonacciPage: React.FC = () => {
           isLimitText={true}
           onChange={handleChange}
         />
-        <Button type="submit" text="рассчитать" disabled={checkValidity(number) || !number} isLoader={loader} />
+        <Button type="submit" text="рассчитать" disabled={!checkValidity(number) || !number} isLoader={loader} />
       </form>
       <ul className={styles.list}>
         {result?.length > MIN_LENGTH &&
