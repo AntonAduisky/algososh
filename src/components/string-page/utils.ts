@@ -1,31 +1,15 @@
-import { DELAY_IN_MS } from "../../constants/delays";
-import { ElementStates } from "../../types/element-states"
-import { TStringResult } from "../../types/string.types";
+import { swap } from "../../utils/utils";
 
-export const swap = async (array: TStringResult, step: number, delay: (ms: number) => Promise<unknown>) => {
+export const reverseItems = (str: string): string => {
+  const arr = str.split('');
+  let start = 0;
+  let end = arr.length - 1;
 
-  let res = [...array];
-
-  if (res.length === 1) {
-    res[0].state = ElementStates.Modified;
-    return res;
+  while(start <= end) {
+    swap<string>(arr, start, end);
+    start++;
+    end--;
   }
 
-  let tmp = res[step];
-  res[step] = res[res.length - step - 1];
-  res[res.length - step - 1] = tmp;
-
-  res[step].state = ElementStates.Modified;
-  res[res.length - step - 1].state = ElementStates.Modified;
-
-  if (step + 1 < res.length - step - 2) {
-    res[step + 1].state = ElementStates.Changing;
-    res[res.length - step - 2].state = ElementStates.Changing;
-  }
-
-  if (step + 1 === res.length - step - 2) {
-    res[step + 1].state = ElementStates.Modified;
-  }
-  await delay(DELAY_IN_MS)
-  return res;
-}
+  return arr.join('');
+};

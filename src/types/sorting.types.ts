@@ -10,5 +10,3 @@ export type TColumns =
     number: number;
     state: ElementStates;
   };
-
-export type TNewArray = Array<TColumns>
