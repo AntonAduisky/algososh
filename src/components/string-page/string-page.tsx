@@ -63,6 +63,7 @@ export const StringPage: React.FC = () => {
           <Circle
             letter={item.item}
             state={item.state}
+            dataCy={index}
           />
         </li>
       );
@@ -79,8 +80,15 @@ export const StringPage: React.FC = () => {
           isLimitText={true}
           value={string}
           onChange={handleChange}
+          dataCy={"reverse-input"}
         />
-        <Button type="submit" text="развернуть" disabled={!string} isLoader={loader} />
+        <Button 
+        type="submit" 
+        text="развернуть" 
+        disabled={!string} 
+        isLoader={loader}
+        dataCy={"reverse-button"}
+        />
       </form>
       <ul className={styles.list}>
         {renderResult}
