@@ -39,8 +39,15 @@ export const FibonacciPage: React.FC = () => {
           maxLength={MAX_NUMBER}
           isLimitText={true}
           onChange={handleChange}
+          dataCy={'fibonacci-input'}
         />
-        <Button type="submit" text="рассчитать" disabled={!checkValidity(number) || !number} isLoader={loader} />
+        <Button 
+        type="submit" 
+        text="рассчитать" 
+        disabled={!checkValidity(number) || !number} 
+        isLoader={loader}
+        dataCy={'fibonacci-button'}
+        />
       </form>
       <ul className={styles.list}>
         {result?.length > MIN_LENGTH &&
