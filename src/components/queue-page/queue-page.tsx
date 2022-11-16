@@ -108,12 +108,14 @@ export const QueuePage: React.FC = () => {
           isLimitText
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+          dataCy={'queue-input'}
         />
         <Button
           text="Добавить"
           onClick={handleAdd}
           disabled={!value || loader.removed || queue.getLength() === MAX_NUMBER}
           isLoader={loader.added}
+          dataCy={'queue-add-button'}
         />
         <Button
           text="Удалить"
@@ -123,6 +125,7 @@ export const QueuePage: React.FC = () => {
             || loader.added
             || queue.isEmpty()}
           isLoader={loader.removed}
+          dataCy={'queue-remove-button'}
         />
         <Button
           text="Очистить"
@@ -132,6 +135,7 @@ export const QueuePage: React.FC = () => {
             || loader.added
             || queue.isEmpty()}
           isLoader={loader.removed}
+          dataCy={'queue-clear-button'}
         />
       </form>
       <ul className={styles.list}>
