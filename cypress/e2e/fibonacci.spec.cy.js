@@ -1,23 +1,24 @@
 import { X_SHORT_DELAY_IN_MS } from '../../src/constants/delays';
+import {testUrl, content, fibonacciInput, fibonacciButton} from '../../src/constants/dom-content';
 
 describe("Testing fibonacci-page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/fibonacci");
+    cy.visit(`${testUrl}/fibonacci`);
   })
 
   it("While input is empty, the add button is not available", () => {
-    cy.get('[data-cy="fibonacci-input"]').clear().should("have.value", "");
-    cy.get('[data-cy="fibonacci-button"]').should("be.disabled");
+    cy.get(fibonacciInput).clear().should("have.value", "");
+    cy.get(fibonacciButton).should("be.disabled");
   })
 
   it("Fibonacci-page should render circles correctly", () => {
-    cy.get('[data-cy="fibonacci-input"]').type('19');
-    cy.get('[data-cy="fibonacci-button"]').click()
+    cy.get(fibonacciInput).type('19');
+    cy.get(fibonacciButton).click()
 
     // eslint-disable-next-line testing-library/await-async-utils
     cy.wait(X_SHORT_DELAY_IN_MS * 19);
 
-    cy.get('[class*=circle_content]')
+    cy.get(content)
       .should('have.length', 19)
       .each((value, index) => {
         if (index === 0) cy.wrap(value).contains(1);

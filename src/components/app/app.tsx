@@ -8,12 +8,11 @@ import { StringPage } from "../string-page/string-page";
 import { SortingPage } from "../sorting-page/sorting-page";
 import { StackPage } from "../stack-page/stack-page";
 
-import "./app.css";
-
+import styles from "./app.module.css"
 function App() {
   return (
-    <div className="app">
-      <BrowserRouter>
+    <div className={styles.app}>
+      <BrowserRouter  basename='/algososh'>
         <Switch>
           <Route path="/" exact>
             <MainPage />

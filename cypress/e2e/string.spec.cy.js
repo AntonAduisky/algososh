@@ -1,20 +1,23 @@
+import {testUrl, content, reverseInput, reverseButton} from '../../src/constants/dom-content';
+
 describe("Testing string-page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/recursion");
+    cy.visit(`${testUrl}/recursion`);
   })
 
   it("While input is empty, the add button is not available", () => {
-    cy.get('[data-cy="reverse-input"]').clear().should("have.value", "");
-    cy.get('[data-cy="reverse-button"]').should("be.disabled");
+    cy.get(reverseInput).clear().should("have.value", "");
+    cy.get(reverseButton).should("be.disabled");
   })
+
 
   it("String-page should render circles correctly", () => {
     const TYPED_VALUE = "test";
 
-    cy.get('[data-cy="reverse-input"]').type(TYPED_VALUE);
-    cy.get('[data-cy="reverse-button"]').click();
+    cy.get(reverseInput).type(TYPED_VALUE);
+    cy.get(reverseButton).click();
 
-    cy.get('[class*=circle_content]')
+    cy.get(content)
       .should('have.length', 4)
       .each((value, index) => {
         cy.wrap(value).contains(TYPED_VALUE[index]);
@@ -29,7 +32,7 @@ describe("Testing string-page", () => {
       });
 
 
-    cy.get('[class*=circle_content]')
+    cy.get(content)
       .should('have.length', 4)
       .each((value, index) => {
 

@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import {testUrl} from "./src/constants/dom-content";
 
 module.exports = defineConfig({
   component: {
@@ -12,7 +13,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     video: false,
-    baseUrl: 'http://localhost:3000/algososh',
+    baseUrl: testUrl,
     viewportWidth: 1600,
     viewportHeight: 900,
   },
