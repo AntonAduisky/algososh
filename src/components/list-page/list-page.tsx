@@ -362,6 +362,7 @@ export const ListPage: React.FC = () => {
             placeholder="Введите значение"
             value={inputValue}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setValueInput(e.target.value)}
+            dataCy="value-input"
           />
           <Button
             text="Добавить в head"
@@ -373,6 +374,7 @@ export const ListPage: React.FC = () => {
               || list.getSize() === MAX_SIZE
             }
             isLoader={loader.append}
+            dataCy="add-to-head"
           />
           <Button
             text="Добавить в tail"
@@ -384,6 +386,7 @@ export const ListPage: React.FC = () => {
               || list.getSize() === MAX_SIZE
             }
             isLoader={loader.prepend}
+            dataCy="add-to-tail"
           />
           <Button
             text="Удалить из head"
@@ -394,6 +397,7 @@ export const ListPage: React.FC = () => {
               || loader.disabled
             }
             isLoader={loader.removeHead}
+            dataCy="remove-from-head"
           />
           <Button
             text="Удалить из tail"
@@ -404,6 +408,7 @@ export const ListPage: React.FC = () => {
               || loader.disabled
             }
             isLoader={loader.removeTail}
+            dataCy="remove-from-tail"
           />
         </div>
         <div className={styles.wrapper}>
@@ -412,6 +417,7 @@ export const ListPage: React.FC = () => {
             placeholder="Введите индекс"
             value={indexInput}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setIndexInput(e.target.value)}
+            dataCy="index-input"
           />
           <Button
             text="Добавить по индексу"
@@ -423,6 +429,7 @@ export const ListPage: React.FC = () => {
               || loader.disabled
               || list.getSize() === MAX_SIZE
             }
+            dataCy="add-by-index"
           />
           <Button
             text="Удалить по индексу"
@@ -436,6 +443,7 @@ export const ListPage: React.FC = () => {
               || !parseInt(indexInput)
               || parseInt(indexInput) < 0
               || parseInt(indexInput) > list.getSize() - 1}
+            dataCy="remove-by-index"
 
           />
         </div>

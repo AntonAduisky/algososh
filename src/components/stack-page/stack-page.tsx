@@ -95,23 +95,27 @@ export const StackPage: React.FC = () => {
           isLimitText
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+          dataCy={'stack-input'}
         />
         <Button
           text="Добавить"
           onClick={handleAdd}
           disabled={!value || loader.removed || stack.getSize() > MAX_SIZE}
           isLoader={loader.added}
+          dataCy={'stack-add-button'}
         />
         <Button
           text="Удалить"
           onClick={handleRemove}
           disabled={stack.getSize() === 0 || loader.added}
           isLoader={loader.removed}
+          dataCy={'stack-remove-button'}
         />
         <Button
           text="Очистить"
           onClick={handleClear}
           disabled={stack.getSize() === 0 || loader.added}
+          dataCy={'stack-clear-button'}
         />
       </form>
       <ul className={styles.list}>

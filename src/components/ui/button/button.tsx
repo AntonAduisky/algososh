@@ -12,6 +12,7 @@ interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   linkedList?: "small" | "big";
   isLoader?: boolean;
   extraClass?: string;
+  dataCy?: number | string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -22,21 +23,21 @@ export const Button: React.FC<ButtonProps> = ({
   sorting,
   linkedList,
   disabled,
+  dataCy = undefined,
   ...rest
 }) => {
   const currentIcon =
     sorting === Direction.Ascending ? <AscendingIcon /> : <DescendingIcon />;
-  const className = `text text_type_button text_color_primary ${
-    styles.button
-  } ${linkedList && styles[linkedList]} ${
-    isLoader && styles.loader
-  } ${extraClass}`;
+  const className = `text text_type_button text_color_primary ${styles.button
+    } ${linkedList && styles[linkedList]} ${isLoader && styles.loader
+    } ${extraClass}`;
 
   return (
     <button
       className={className}
       type={type}
       disabled={isLoader || disabled}
+      data-cy={dataCy}
       {...rest}
     >
       {isLoader ? (
