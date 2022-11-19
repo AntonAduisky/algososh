@@ -1,6 +1,6 @@
 import { X_SHORT_DELAY_IN_MS, SHORT_DELAY_IN_MS } from '../../src/constants/delays';
 import {
-  testUrl, content, listValueInput, listIndexInput,
+  content, listValueInput, listIndexInput,
   listAddToHeadButton, listAddToTailButton,
   listRemoveFromHeadButton, listRemoveFromTailButton,
   listAddByIndexButton, listRemoveByIndexButton
@@ -8,7 +8,7 @@ import {
 
 describe("Testing list-page", () => {
   it("List-page is available", () => {
-    cy.visit(`${testUrl}/list`);
+    cy.visit("/list");
   });
 
   it("While input's is empty, the add button is not available", () => {

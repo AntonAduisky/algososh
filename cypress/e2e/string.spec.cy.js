@@ -1,8 +1,8 @@
-import {testUrl, content, reverseInput, reverseButton} from '../../src/constants/dom-content';
+import { content, reverseInput, reverseButton } from '../../src/constants/dom-content';
 
 describe("Testing string-page", () => {
   beforeEach(() => {
-    cy.visit(`${testUrl}/recursion`);
+    cy.visit("/recursion");
   })
 
   it("While input is empty, the add button is not available", () => {

@@ -1,12 +1,12 @@
 import { X_SHORT_DELAY_IN_MS } from "../../src/constants/delays";
-import {testUrl, content, stackInput, stackAddButton, stackRemoveButton} from '../../src/constants/dom-content';
+import { content, stackInput, stackAddButton, stackRemoveButton } from '../../src/constants/dom-content';
 
 describe("Testing stack-page", () => {
   beforeEach(() => {
-    cy.visit(`${testUrl}/stack`);
+    cy.visit("/stack");
   });
 
-  
+
   it("While input is empty, the add button is not available", () => {
     cy.get(stackInput).clear().should("have.value", "");
     cy.get(stackAddButton).should("be.disabled");

@@ -1,9 +1,9 @@
 import { X_SHORT_DELAY_IN_MS } from '../../src/constants/delays';
-import {testUrl, content, fibonacciInput, fibonacciButton} from '../../src/constants/dom-content';
+import { content, fibonacciInput, fibonacciButton } from '../../src/constants/dom-content';
 
 describe("Testing fibonacci-page", () => {
   beforeEach(() => {
-    cy.visit(`${testUrl}/fibonacci`);
+    cy.visit("/fibonacci");
   })
 
   it("While input is empty, the add button is not available", () => {

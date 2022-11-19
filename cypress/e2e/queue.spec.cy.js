@@ -1,9 +1,9 @@
 import { X_SHORT_DELAY_IN_MS } from '../../src/constants/delays';
-import {testUrl, content, queueInput, queueAddButton, queueRemoveButton} from '../../src/constants/dom-content';
+import { testUrl, content, queueInput, queueAddButton, queueRemoveButton } from '../../src/constants/dom-content';
 
 describe("Testing queue-page", () => {
   it("Queue-page is available", () => {
-    cy.visit(`${testUrl}/queue`);
+    cy.visit("/queue");
   });
 
 
