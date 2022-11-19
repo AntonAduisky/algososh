@@ -3,6 +3,7 @@
 exports[`Check props button Circle component are displayed correctly without props 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -12,6 +13,7 @@ exports[`Check props button Circle component are displayed correctly without pro
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -26,6 +28,7 @@ exports[`Check props button Circle component are displayed correctly without pro
 exports[`Check props button Circle component change-state-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -35,6 +38,7 @@ exports[`Check props button Circle component change-state-props are displayed co
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -49,6 +53,7 @@ exports[`Check props button Circle component change-state-props are displayed co
 exports[`Check props button Circle component changing-state-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -58,6 +63,7 @@ exports[`Check props button Circle component changing-state-props are displayed 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -72,6 +78,7 @@ exports[`Check props button Circle component changing-state-props are displayed 
 exports[`Check props button Circle component default-state-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -81,6 +88,7 @@ exports[`Check props button Circle component default-state-props are displayed c
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -95,6 +103,7 @@ exports[`Check props button Circle component default-state-props are displayed c
 exports[`Check props button Circle component head-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head string"
@@ -106,6 +115,7 @@ exports[`Check props button Circle component head-props are displayed correctly 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -120,12 +130,14 @@ exports[`Check props button Circle component head-props are displayed correctly 
 exports[`Check props button Circle component head-props are displayed correctly with React-element in props 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
   >
     <div
       className="content "
+      data-cy="circle"
     >
       <div
         className="text text_type_input text_color_input mb-4 absolute head element"
@@ -135,6 +147,7 @@ exports[`Check props button Circle component head-props are displayed correctly 
       >
         <p
           className="text text_type_circle text_color_input letter"
+          data-cy="circle-text"
         />
       </div>
       <p
@@ -150,6 +163,7 @@ exports[`Check props button Circle component head-props are displayed correctly 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -164,6 +178,7 @@ exports[`Check props button Circle component head-props are displayed correctly 
 exports[`Check props button Circle component index-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -173,6 +188,7 @@ exports[`Check props button Circle component index-props are displayed correctly
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -189,6 +205,7 @@ exports[`Check props button Circle component index-props are displayed correctly
 exports[`Check props button Circle component isSmall-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -198,6 +215,7 @@ exports[`Check props button Circle component isSmall-props are displayed correct
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -212,6 +230,7 @@ exports[`Check props button Circle component isSmall-props are displayed correct
 exports[`Check props button Circle component letter-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -221,6 +240,7 @@ exports[`Check props button Circle component letter-props are displayed correctl
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     >
       test text
     </p>
@@ -237,6 +257,7 @@ exports[`Check props button Circle component letter-props are displayed correctl
 exports[`Check props button Circle component modified-state-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -246,6 +267,7 @@ exports[`Check props button Circle component modified-state-props are displayed 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -260,6 +282,7 @@ exports[`Check props button Circle component modified-state-props are displayed 
 exports[`Check props button Circle component tail-props are displayed correctly 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -269,6 +292,7 @@ exports[`Check props button Circle component tail-props are displayed correctly 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -285,6 +309,7 @@ exports[`Check props button Circle component tail-props are displayed correctly 
 exports[`Check props button Circle component tail-props are displayed correctly with React-element in props 1`] = `
 <div
   className="content "
+  data-cy="circle"
 >
   <div
     className="text text_type_input text_color_input mb-4 absolute head element"
@@ -294,6 +319,7 @@ exports[`Check props button Circle component tail-props are displayed correctly 
   >
     <p
       className="text text_type_circle text_color_input letter"
+      data-cy="circle-text"
     />
   </div>
   <p
@@ -304,6 +330,7 @@ exports[`Check props button Circle component tail-props are displayed correctly 
   >
     <div
       className="content "
+      data-cy="circle"
     >
       <div
         className="text text_type_input text_color_input mb-4 absolute head element"
@@ -313,6 +340,7 @@ exports[`Check props button Circle component tail-props are displayed correctly 
       >
         <p
           className="text text_type_circle text_color_input letter"
+          data-cy="circle-text"
         />
       </div>
       <p
