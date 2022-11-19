@@ -163,7 +163,7 @@ export class LinkedList<T> implements ILinkedList<T> {
 }
 
 
-export const randomStringArr = (min = 4, max = 6) => {
+export const randomStringArr = (min = 4, max = 4) => {
   const limit = Math.floor(Math.random() * (max + 1 - min)) + min;
   const arr = [];
   for (let i = 0; i < limit; i++) {

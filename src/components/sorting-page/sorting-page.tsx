@@ -5,14 +5,14 @@ import { ElementStates } from '../../types/element-states';
 import { RadioInput } from "../ui/radio-input/radio-input";
 import { Button } from "../ui/button/button";
 import { Column } from "../ui/column/column";
-import { randomArr, swap } from "./utils";
-import { setDelay } from "../../utils/utils";
+import { randomArr} from "./utils";
+import { setDelay, swap } from "../../utils/utils";
 import { X_SHORT_DELAY_IN_MS } from "../../constants/delays";
-import { TNewArray, TSortingLoader } from "../../types/sorting.types";
+import { TColumns, TSortingLoader } from "../../types/sorting.types";
 
 export const SortingPage: React.FC = () => {
   const [selectedSort, setSelectedSort] = useState<string>("selection");
-  const [newArray, setNewArray] = useState<TNewArray>([]);
+  const [newArray, setNewArray] = useState<TColumns[]>([]);
   const [loader, setLoader] = useState<TSortingLoader>({
     ascending: false,
     descending: false
@@ -47,10 +47,6 @@ export const SortingPage: React.FC = () => {
 
     const arr = newArray.slice();
 
-
-    //Можно лучше: Здесь и далее. Стоит создать функции сортировки таким образом, 
-    //чтобы они возвращали набор шагов и далее при отображении алгоритма добавлять паузы между шагами, 
-    //а не генерировать паузы непосредственно в алгоритме.
     for (let i = 0; i < arr.length; i++) {
       let sortIdx = i;
       arr[sortIdx].state = ElementStates.Changing;
@@ -72,7 +68,7 @@ export const SortingPage: React.FC = () => {
         setNewArray([...arr]);
         await setDelay(X_SHORT_DELAY_IN_MS);
       }
-      swap(arr, i, sortIdx);
+      swap<TColumns>(arr, i, sortIdx);
       arr[sortIdx].state = ElementStates.Default;
       arr[i].state = ElementStates.Modified;
       setNewArray([...arr]);
@@ -101,13 +97,13 @@ export const SortingPage: React.FC = () => {
         await setDelay(X_SHORT_DELAY_IN_MS);
         if (ascending) {
           if (arr[j].number > arr[j + 1].number) {
-            swap(arr, j, j + 1);
+            swap<TColumns>(arr, j, j + 1);
             setNewArray([...arr]);
             await setDelay(X_SHORT_DELAY_IN_MS);
           }
         } else {
           if (arr[j].number < arr[j + 1].number) {
-            swap(arr, j, j + 1);
+            swap<TColumns>(arr, j, j + 1);
             setNewArray([...arr]);
             await setDelay(X_SHORT_DELAY_IN_MS);
           }

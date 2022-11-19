@@ -1,67 +1,74 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./string.module.css";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
-import { swap } from "./utils";
+import {  reverseItems } from "./utils";
 import { setDelay } from "../../utils/utils";
 import { TStringResult } from "../../types/string.types";
-import { MAX_LENGTH, MIN_LENGTH } from "../../constants/string";
+import { MAX_LENGTH } from "../../constants/string";
+import { DELAY_IN_MS } from "../../constants/delays";
 
 export const StringPage: React.FC = () => {
   const [string, setString] = useState<string>('');
   const [result, setResult] = useState<TStringResult>([]);
-  const [step, setStep] = useState<number>(-1);
+  const [renderResult, setRenderResult] = useState<JSX.Element[]>([]);
   const [loader, setLoader] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setString(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setString(e.currentTarget.value);
+    setResult(e.currentTarget.value.split('').map((item) => {
+      return {
+        item,
+        state: ElementStates.Default,
+      };
+    }));
   };
 
-  const handleClick = (e: FormEvent<HTMLFormElement>) => {
+  const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const items = string.split('');
-    if (items.length < MIN_LENGTH) {
-      setResult([{ item: items[0], state: ElementStates.Modified }]);
-      return;
-    }
-    setResult(
-      items.map((item, index) => {
-        const elementState =
-          index === 0 || index === string.length - 1
-            ? ElementStates.Changing
-            : ElementStates.Default;
-        return {
-          item,
-          state: elementState,
-        };
-      })
-    );
     setLoader(true);
-    setStep(0);
+    const reversedString =  reverseItems(string);
+    renderAlgorithm();
+    const arr = result;
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start <= end) {
+
+      await setDelay(DELAY_IN_MS);
+      arr[start].state = ElementStates.Changing;
+      arr[end].state = ElementStates.Changing;
+      setResult(arr);
+      renderAlgorithm();
+      await setDelay(DELAY_IN_MS);
+      arr[start].item = reversedString[start];
+      arr[end].item = reversedString[end];
+      arr[start].state = ElementStates.Modified;
+      arr[end].state = ElementStates.Modified;
+      setResult(arr);
+      renderAlgorithm();
+      start++;
+      end--;
+    }
+    setLoader(false);
   };
 
-
-  const reverseItems = async () => {
-    if (step < 0) {
-      return;
-    }
-    if (step >= result.length / 2) {
-      setLoader(false);
-      return;
-    }
-    setResult(await swap(result, step, setDelay));
-    setStep(step + 1);
+  const renderAlgorithm = () => {
+    setRenderResult(result.map((item, index) => {
+      return (
+        <li className={styles.items} key={index}>
+          <Circle
+            letter={item.item}
+            state={item.state}
+            dataCy={index}
+          />
+        </li>
+      );
+    }));
   };
-
-
-  useEffect(() => {
-    reverseItems()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
-
 
   return (
     <SolutionLayout title="Строка">
@@ -73,19 +80,18 @@ export const StringPage: React.FC = () => {
           isLimitText={true}
           value={string}
           onChange={handleChange}
+          dataCy={"reverse-input"}
         />
-        <Button type="submit" text="развернуть" disabled={!string} isLoader={loader} />
+        <Button 
+        type="submit" 
+        text="развернуть" 
+        disabled={!string} 
+        isLoader={loader}
+        dataCy={"reverse-button"}
+        />
       </form>
       <ul className={styles.list}>
-        {string &&
-          result.map((item, index) => (
-            <li className={styles.items} key={index}>
-              <Circle
-                state={item.state}
-                letter={item.item}
-              />
-            </li>
-          ))}
+        {renderResult}
       </ul>
     </SolutionLayout>
   );
